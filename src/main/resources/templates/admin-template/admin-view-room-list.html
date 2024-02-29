@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+
+<div class="container mt-4">
+    <form th:action="@{/admin/phong/timkiem}" method="get" >
+        <input type="text" name="name">
+        <input type="checkbox" value="hehe" name="hehe"> aaa
+        <input type="submit">
+    </form>
+    <p>aaaaa</p>
+    <form th:action="@{/admin/phong/loc}" method="get" th:each="item:${dsLoai}">
+        <input type="checkbox" value="hehe" name="hehe"> aaa
+
+    </form>
+    <h1 class="text-center h1">Thông tin phòng</h1>
+    <a class="btn btn-primary btn-lg m-3" th:href="@{/admin/phong/add}" >Thêm  </a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <td>Mã phòng</td>
+            <td>Số phòng</td>
+            <td>Loại phòng</td>
+            <td>Action</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${dsPhong}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.tenPhong}"></td>
+            <td th:text="${item.loaiPhongID.tenLoaiPhong}"></td>
+            <td>
+                <!-- Edit Button -->
+                <a th:href="@{/admin/phong/update(id=${item.id})}" class="btn btn-primary btn-sm" >Edit</a>
+
+                <!-- Delete Button -->
+                <a th:href="@{/admin/phong/delete(id=${item.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

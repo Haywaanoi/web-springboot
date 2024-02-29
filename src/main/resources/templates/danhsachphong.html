@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="index::head">
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Offcanvas Menu Section Begin -->
+<div th:replace="index::offcanvas-menu"></div>
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+<header th:replace="index::header-section"></header>
+<!-- Header End -->
+
+<!-- Breadcrumb Section Begin -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>Our Rooms</h2>
+                    <div class="bt-option">
+                        <a th:href="@{/}">Home</a>
+                        <span>Rooms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section End -->
+<!--    Room Details Find Form Start-->
+<div class="booking-form container">
+    <div>
+        <h2 class="mb-4 text-center">Find Room</h2>
+        <form th:action="@{/danhsach}" method="get">
+            <div class="mb-3">
+                <label for="checkInDate" class="form-label">Check In Date</label>
+                <input type="date" class="form-control"id="checkInDate" th:value="*{checkInDate}" name="checkInDate" required>
+            </div>
+            <div class="mb-3">
+                <label for="checkOutDate" class="form-label">Check Out Date</label>
+                <input type="date" class="form-control" id="checkOutDate" th:value="*{checkOutDate}" name="checkOutDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary ">Check Availability</button>
+        </form>
+    </div>
+</div>
+<!--Room Details Find Form End-->
+
+
+
+<!-- Room Details Section Begin -->
+<div class="container">
+    <div class="row">
+        <!-- Phòng Standard -->
+        <div class="col-md-4" th:each="room:${phongTrong}">
+            <div class="card border-warning mt-3 mb-3" >
+                <img th:src="${room.loaiPhongID.duongDanHinhAnh}" class="card-img-top" alt="" height="200" width="300">
+                <div class="card-body border-warning">
+                    <h2 th:class="card-title" th:text="${room.loaiPhongID.tenLoaiPhong}"></h2>
+                    <p th:class="card-text" th:text="'Mô tả: '+${room.loaiPhongID.moTaLoaiPhong}"></p>
+                    <h3 th:class="card-text" th:text="${room.loaiPhongID.giaLoaiPhong}+'$'"></h3>
+                    <a th:href="@{'/chitietphong?id=' + ${room.id} + '&checkIn=' + ${checkInDate} + '&checkOut=' + ${checkOutDate}}" class="btn btn-primary centered">Chi Tiết</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Room Details Section End -->
+
+<!-- Footer Section Begin -->
+<footer th:replace="index::footer"></footer>
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<div th:replace="index::script"></div>
+</body>
+
+</html>
+
+
+
+
+
+

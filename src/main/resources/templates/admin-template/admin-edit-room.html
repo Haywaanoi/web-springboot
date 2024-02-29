@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+<div class="container mt-5">
+    <h2>Nhập thông tin phòng</h2>
+    <form th:action="@{/admin/phong/edit}" th:object="${phong}" method="post">
+        <div class="form-group">
+            <label for="tenPhong">Tên Phòng:</label>
+            <input type="hidden" th:field="*{id}">
+            <input type="text" class="form-control" th:field="*{tenPhong}" id="tenPhong" placeholder="Nhập tên phòng">
+        </div>
+
+        <div class="form-group">
+            <label for="loaiPhong">Loại Phòng:</label>
+            <select th:field="*{loaiPhongID.id}" class="form-control" id="loaiPhong">
+                <option th:each="phong:${listLoai}" th:value="${phong.id}" th:text="${phong.tenLoaiPhong}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-1">Save</button>
+    </form>
+</div>
+
+<!-- Bao gồm các tệp JavaScript Bootstrap (jQuery và Popper.js) -->
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+#sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 150px;
+            z-index: 1;
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+
+#content {
+            margin-left: 150px; /* Điều chỉnh giá trị này để tương ứng với chiều rộng của sidebar */
+         }
+

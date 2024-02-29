@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="index::head">
+</head>
+<body>
+<!-- Offcanvas Menu Section Begin -->
+<div th:replace="index::offcanvas-menu"></div>
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+<header th:replace="index::header-section"></header>
+<!-- Header End -->
+
+<!--Login form start-->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Register</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/register/add}" method="post" th:object="${guest}">
+                        <div class="mb-3">
+                            <label for="gname" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="gname" name="gname" th:field="*{hoTen}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="gmail" name="gmail" th:field="*{email}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gtel" class="form-label">Telephone</label>
+                            <input type="tel" class="form-control" id="gtel" name="gtel" th:field="*{soDienThoai}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gusername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="gusername" name="gusername" th:field="*{tenDangNhap}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gpassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="gpassword" name="gpassword" th:field="*{matKhau}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gcfpass" class="form-label">Confirm password</label>
+                            <input type="password" class="form-control" id="gcfpass" name="confirmpass" th:field="*{xacnhanmatkhau}" required>
+                        </div>
+<!--                        <div th:if="${param.matKhau!=param.xacnhanmatkhau}">-->
+<!--                            <span class="alert-danger">Mat khau khong trung</span>-->
+<!--                        </div>-->
+                        <button type="submit" class="btn btn-primary">Sign Up</button> Already have a account?  <a th:href="@{/showlogin}" class="link-primary">Login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Login form end-->
+<div class="mt-5">
+    <footer th:replace="index::footer"></footer>
+</div>
+<div th:replace="index::script"></div>
+</body>
+</html>

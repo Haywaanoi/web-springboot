@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
+
+</head>
+<body class="bg-light">
+<div th:replace="index::#preloder"></div>
+<div th:replace="index::offcanvas-menu"></div>
+<header th:replace="index::header-section"></header>
+<div class="container mb-4">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="text-danger">Access Denied</h2>
+                    <p class="text-muted">You do not have permission to access this page.</p>
+                    <a th:href="@{/}" class="btn btn-primary">Go to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="index::footer"></footer>
+
+</body>
+<div th:replace="index::script"></div>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+<div class="container mt-4">
+    <h1 class="h1 text-center  mb-4"></h1>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark text-center">
+        <tr>
+            <th>Họ tên</th>
+            <th>Tên đăng nhập</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${listadmin}" align="center">
+            <td th:text="${item.hoTen}"></td>
+            <td th:text="${item.tenDangNhap}"></td>
+            <td><a class="btn btn-danger" th:href="@{'/admin/view-admin/delete/'+${item.id}}">Xóa</a>|<a class="btn btn-success" th:href="@{'/admin/view-admin/edit/'+${item.id}}">Sửa</a></td>
+        </tr>
+        <tr align="center">
+            <td colspan="3"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themModal" >Thêm</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="modal" id="themModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" >Thêm quản trị viên</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/admin/view-admin/save}" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col">
+                                <span>Họ và tên:</span> <input class="form-control" type="text" name="name" placeholder="Nhap ten loai" required>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span>Tên đăng nhập: </span> <input type="text" name="username" class="form-control" required>
+                                </div>
+                                <div class="col">
+                                    <span>Mật khẩu: </span> <input type="password" name="password" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div align="center"><input id="btnThem" type="submit" class="btn btn-success" value="Thêm" data-bs-dismiss="modal"></div>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+<div class="container mt-5 ">
+    <h1 class="h1 text-center">Cập nhật thông tin khách hàng</h1>
+    <form th:action="@{/admin/khachhang/edit}" method="post" th:object="${khachhang}">
+        <div class="form-group">
+            <label for="hoTen">Nhập họ tên:</label>
+            <input type="hidden" th:field="*{id}">
+            <input type="text" class="form-control" th:field="*{hoTen}" id="hoTen" placeholder="Nhập Họ Tên">
+            <label for="soDienThoai">Số điện thoại:</label>
+            <input type="text" class="form-control" th:field="*{soDienThoai}" id="soDienThoai" placeholder="Số điện thoại">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Email">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" class="form-control" th:field="*{tenDangNhap}" id="username" placeholder="Tên đăng nhập" required>
+            <label for="pasword">Mật khẩu</label>
+            <input type="password" class="form-control" th:field="*{matKhau}" id="pasword" placeholder="Mật khẩu mới" >
+
+            <input type="hidden" class="form-control" th:field="*{role}" >
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+</div>
+</body>
+</html>

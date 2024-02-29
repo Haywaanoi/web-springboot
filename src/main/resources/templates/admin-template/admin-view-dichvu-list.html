@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+<div class="container mt-4">
+    <h1 class="h1 text-center">Thông tin dịch vụ</h1>
+    <a class="btn btn-primary btn-lg m-3" th:href="@{/admin/dichvu/add}" >Thêm </a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr class="justify-content-center">
+            <td>ID</td>
+            <td>Tên dịch vụ</td>
+            <td>Mô tả</td>
+            <td>Giá dịch vụ</td>
+            <td>Action</td>
+        </tr>
+        </thead>
+        <tbody class="justify-content-center">
+        <tr th:each="item:${dsDichvu}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.tenDichVu}"></td>
+            <td th:text="${item.moTaDichVu}"></td>
+            <td th:text="${item.giaDichVu}"></td>
+            <td>
+                <!-- Edit Button -->
+                <a th:href="@{/admin/dichvu/update(id=${item.id})}" class="btn btn-primary btn-sm" >Edit</a>
+
+                <!-- Delete Button -->
+                <a th:href="@{/admin/dichvu/delete(id=${item.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

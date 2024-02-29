@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
+</head>
+
+<body>
+<!-- Page Preloder -->
+<!--<div id="preloder">-->
+<!--    <div class="loader"></div>-->
+<!--</div>-->
+
+<!-- Offcanvas Menu Section Begin -->
+<div th:replace="index::offcanvas-menu"></div>
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+<header th:replace="index::header-section"></header>
+<!-- Header End -->
+<form th:action="@{/user/save}" th:object="${Khachhang}" class="h-100" method="post">
+    <div class="centered w-25 h-100" >
+        <input type="hidden" class="form-control" th:field="*{id}" placeholder="Example input placeholder">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Họ tên</label>
+            <input type="text" class="form-control" th:field="*{hoTen}" id="formGroupExampleInput"  placeholder="Example input placeholder">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Email</label>
+            <input type="email"   class="form-control" th:field="*{email}" id="formGroupExampleInput2" placeholder="Another input placeholder">
+        </div>
+        <div class="mb-3">
+            <label for="sodienthoai" class="form-label">Số điện thoại</label>
+            <input type="text"  class="form-control" th:field="*{soDienThoai}" id="sodienthoai" placeholder="Another input placeholder">
+        </div>
+        <input type="text" class="form-control" th:field="*{tenDangNhap}" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" required class="form-control" th:field="*{matKhau}" id="pasword" placeholder="Mật khẩu mới" >
+
+        <input type="hidden" class="form-control" th:field="*{role}" >
+       <input type="submit" value="Lưu">
+    </div>
+
+</form>
+<div class="mt-auto">
+    <footer th:replace="index::footer"></footer>
+</div>
+<div th:replace="index::script"></div>
+</body>
+</html>

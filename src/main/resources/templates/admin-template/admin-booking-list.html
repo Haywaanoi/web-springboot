@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+
+</head>
+<body>
+<nav  th:replace="admin-template/admin-page::admin-nav"></nav>
+
+<div class="container mt-4">
+    <h1 class="h1 text-center">Thông tin đơn đặt phòng</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="table table-dark">
+        <tr>
+            <th>Mã đơn đặt phòng</th>
+            <th>Tên khách hàng</th>
+            <th>Ngày nhận phòng</th>
+            <th>Ngày trả phòng</th>
+            <th>Số khách</th>
+            <th>Dịch vụ đã chọn</th>
+            <th>Số phòng</th>
+            <th>Loại phòng đã đặt</th>
+            <th>Tiền phòng</th>
+            <th>Tiền dịch vụ</th>
+            <th>Ngày tạo</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${dsDatPhong}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.maKhachHang.hoTen}"></td>
+            <td th:text="${item.ngayNhanPhong}"></td>
+            <td th:text="${item.ngayTraPhong}"></td>
+            <td th:text="${item.soKhach}"></td>
+            <td th:text="${item.maDichVu.tenDichVu}"></td>
+            <td th:text="${item.maPhong.tenPhong}"></td>
+            <td th:text="${item.maPhong.loaiPhongID.tenLoaiPhong}"></td>
+            <td th:text="${item.maPhong.loaiPhongID.giaLoaiPhong+'/night'}"></td>
+            <td th:text="${item.maDichVu.giaDichVu}"></td>
+            <td th:text="${item.ngayTao}"></td>
+            <td><a th:href="@{'/admin/list-datphong/delete/'+${item.id}}" class="btn btn-danger">Xóa</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

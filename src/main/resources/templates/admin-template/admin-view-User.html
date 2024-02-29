@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+<div class="container mt-4">
+    <h1 class="h1 text-center">Thông tin khách hàng</h1>
+    <a class="btn btn-primary btn-lg m-3" th:href="@{/admin/khachhang/add}" >Them  </a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+
+        <tr>
+            <td>Họ Tên</td>
+            <td>Số Điện Thoại</td>
+            <td>Mail</td>
+            <td>Username</td>
+            <td>Action</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${listUser}">
+            <td th:text="${item.hoTen}"></td>
+            <td th:text="${item.soDienThoai}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.tenDangNhap}"></td>
+
+            <td>
+                <!-- Edit Button -->
+                <a th:href="@{/admin/khachhang/update(id=${item.id})}" class="btn btn-primary btn-sm" >Edit</a>
+
+                <!-- Delete Button -->
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

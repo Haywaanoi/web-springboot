@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
+</head>
+
+<body>
+<!-- Page Preloder -->
+<!--<div id="preloder">-->
+<!--    <div class="loader"></div>-->
+<!--</div>-->
+
+<!-- Offcanvas Menu Section Begin -->
+<div th:replace="index::offcanvas-menu"></div>
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+<header th:replace="index::header-section"></header>
+<!-- Header End -->
+<div class="centered w-25 h-100" >
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Họ tên</label>
+        <input type="text" class="form-control" th:value="${Khachhang.hoTen}" id="formGroupExampleInput" readonly placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Email</label>
+        <input type="email" readonly th:value="${Khachhang.email}" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    </div>
+    <div class="mb-3">
+        <label for="sodienthoai" class="form-label">Số điện thoại</label>
+        <input type="text" readonly th:value="${Khachhang.soDienThoai}" class="form-control" id="sodienthoai" placeholder="Another input placeholder">
+    </div>
+    <a th:href="@{/user/capnhat(id=${Khachhang.id})}"><button type="button" class="btn btn-primary btn-lg">Cập nhật thông tin</button></a>
+
+</div>
+
+<div class="mt-auto">
+    <footer th:replace="index::footer"></footer>
+</div>
+<div th:replace="index::script"></div>
+</body>
+</html>

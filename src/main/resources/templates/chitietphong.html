@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="index::head">
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Offcanvas Menu Section Begin -->
+<div th:replace="index::offcanvas-menu"></div>
+<!-- Offcanvas Menu Section End -->
+
+<!-- Header Section Begin -->
+<header th:replace="index::header-section"></header>
+<!-- Header End -->
+
+<!-- Breadcrumb Section Begin -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>Our Rooms</h2>
+                    <div class="bt-option">
+                        <a th:href="@{/}">Home</a>
+                        <span>Rooms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section End -->
+<!--    Room Details Find Form Start-->
+<main class="container mt-4" th:object="${phong}">
+    <div class="row">
+        <div class="col-md-6">
+            <img th:src="*{loaiPhongID.duongDanHinhAnh}" height="400px" width="600px" alt="Phòng khách sạn" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h2 th:text="*{loaiPhongID.tenLoaiPhong}"></h2>
+            <p>Mô tả ngắn về phòng và các tiện nghi cung cấp.</p>
+            <ul>
+                <li th:each="line : *{#strings.setSplit(loaiPhongID.moTaLoaiPhong, '/')}">
+                    <span th:text="${line}"></span>
+                </li>
+            </ul>
+
+            <strong >Giá: </strong> <p th:text="*{loaiPhongID.giaLoaiPhong}"></p>
+
+            <a th:href="@{'/user/booking?id=' + ${phong.id} + '&checkIn=' + ${checkIn} + '&checkOut=' + ${checkOut}}"><button class="btn btn-primary mt-5">Đặt ngay</button></a>
+        </div>
+    </div>
+    <hr>
+</main>
+
+
+<!-- Footer Section Begin -->
+<footer th:replace="index::footer"></footer>
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<div th:replace="index::script"></div>
+</body>
+
+</html>
+
+
+
+
+
+

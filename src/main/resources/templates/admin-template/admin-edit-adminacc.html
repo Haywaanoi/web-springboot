@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin-template/admin-page::admin-head">
+
+</head>
+<body>
+<nav th:replace="admin-template/admin-page::admin-nav"></nav>
+<div class="container mt-4">
+  <h2 class="mb-4 ">Sửa thông tin phòng</h2>
+  <form th:action="@{/admin/view-admin/update}"  method="post" th:object="${admin}">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+      <label for="hoten">Họ tên</label>
+      <input type="text" class="form-control " name="hoten" id="hoten" th:field="*{hoTen}" readonly>
+    </div>
+    <div class="form-group">
+      <label for="tendangnhap">Username</label>
+      <input type="text" class="form-control" name="tendangnhap" id="tendangnhap" th:field="*{tenDangNhap}" readonly>
+    </div>
+    <div class="form-group">
+      <label for="matkhau">Mật khẩu mới</label>
+      <input type="password" class="form-control" name="tenloai" id="matkhau" th:field="*{matKhau}" placeholder="Mật khẩu mới" >
+    </div>
+    <div><input type="hidden" th:field="*{role}"></div>
+    <button id="btnsubmit" type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+  </form>
+</div>
+</body>
+</html>

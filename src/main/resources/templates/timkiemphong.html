@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tìm kiếm phòng</title>
+</head>
+<body>
+<h1>Tìm kiếm phòng khách sạn</h1>
+<form th:action="@{/danhsach}" method="get">
+    <label for="checkInDate">Ngày nhận phòng:</label>
+    <input type="date" id="checkInDate" name="checkInDate" required>
+    <br>
+    <label for="checkOutDate">Ngày trả phòng:</label>
+    <input type="date" id="checkOutDate" name="checkOutDate" required>
+    <br>
+    <input type="submit" value="Tìm kiếm">
+</form>
+</body>
+</html>
