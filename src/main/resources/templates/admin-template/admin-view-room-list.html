@@ -8,12 +8,11 @@
 <div class="container mt-4">
     <form th:action="@{/admin/phong/timkiem}" method="get" >
         <input type="text" name="name">
-        <input type="checkbox" value="hehe" name="hehe"> aaa
         <input type="submit">
     </form>
-    <p>aaaaa</p>
+   
     <form th:action="@{/admin/phong/loc}" method="get" th:each="item:${dsLoai}">
-        <input type="checkbox" value="hehe" name="hehe"> aaa
+        <input type="checkbox" value="hehe" name="hehe">
 
     </form>
     <h1 class="text-center h1">Thông tin phòng</h1>
